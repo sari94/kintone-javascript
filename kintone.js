@@ -14,6 +14,11 @@
     '.gaia-argoui-app-breadcrumb-record',
   ];
 
+  var hide_index_contents = [
+    '.gaia-argoui-app-infobar-breadcrumb-iconlist',
+    '.gaia-argoui-app-viewtoggle-reports'
+  ]
+
   /* index.show */
   kintone.events.on('app.record.index.show', function(event) {
     // field_modified
@@ -36,15 +41,12 @@
       $(this).attr('href', null)
     });
 
-    // space var
-    $('.gaia-argoui-app-infobar-breadcrumb-iconlist').each(function(index) {
+    // hide_contents
+    $(hide_index_contents).each(function(index) {
       $(this).hide();
     });
 
-    // ichiran var
-    $('.gaia-argoui-app-viewtoggle-reports').children('div').each(function(index) {
-      $(this).hide();
-    });
+    // change_var_width
     $('.gaia-argoui-app-viewtoggle').each(function(index) {
       $(this).css({'width':'258px'});
     });
@@ -59,15 +61,12 @@
       $(this).attr('href', null)
     });
 
-    // space var
-    $('.gaia-argoui-app-infobar-breadcrumb-iconlist').each(function(index) {
+    // hide_contents
+    $(hide_index_contents).each(function(index) {
       $(this).hide();
     });
-
-    // ichiran var
-    $('.gaia-argoui-app-viewtoggle-reports').children('div').each(function(index) {
-      $(this).hide();
-    });
+    
+    // change_var_width
     $('.gaia-argoui-app-viewtoggle').each(function(index) {
       $(this).css({'width':'258px'});
     });
@@ -76,6 +75,7 @@
 
   /* detail.show */
   kintone.events.on('app.record.detail.show', function(event) {
+    var record = event.record;
     // field_modified
     for (var key in event.record) {
       if (event.record[key]['type'] == 'SINGLE_LINE_TEXT') {
@@ -89,7 +89,6 @@
     }
 
     // hide_unnecessary_buttons
-    var record = event.record;
     $('.gaia-app-statusbar-actionlist').children('span').each(function(index) {
       if (index > 1) {
         $(this).show().hide();
@@ -100,14 +99,6 @@
     $('.gaia-argoui-app-titlebar-content').each(function(index) {
       $(this).text(cybozu.data.page['APP_NAME']);
       $(this).attr('href', null)
-    });
-
-    // hide_unnecesarry_buttons
-    var record = event.record;
-    $('.gaia-app-statusbar-actionlist').children('span').each(function(index) {
-      if (index > 1) {
-        $(this).show().hide();
-      }
     });
 
     // remove_space_bar
@@ -144,7 +135,7 @@
   });
 
   /* all */
-  $(document).ready( function(){
+  $(document).ready(function() {
     // delete toolbar menu
     $('.gaia-header-toolbar-menu').children('ul').children('li').each(function(index) {
       $(this).hide();
