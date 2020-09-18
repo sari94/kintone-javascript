@@ -119,13 +119,6 @@
     $('.gaia-argoui-app-breadcrumb-item').each(function(index) {
       $(this).text(' ◀︎ 一覧に戻る');
     });
-
-    $('.gaia-argoui-app-viewtoggle').each(function(index) {
-      //if ($(this).aria-setsize == '3') {
-      $(this).hide();
-      //}
-    });
-
   });
 
   /* details.process.proceed */
