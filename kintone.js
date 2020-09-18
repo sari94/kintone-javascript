@@ -50,6 +50,15 @@
     $('.gaia-argoui-app-viewtoggle').each(function(index) {
       $(this).css({'width':'258px'});
     });
+
+    // hide_menuitem
+    $('.gaia-argoui-select').click(function(index) {
+      $('.gaia-argoui-menuitem').each(function(index) {
+        if ($(this).text() == '（すべて）') {
+          $(this).hide();
+        }
+      });
+    });
   });
 
 
@@ -110,6 +119,13 @@
     $('.gaia-argoui-app-breadcrumb-item').each(function(index) {
       $(this).text(' ◀︎ 一覧に戻る');
     });
+
+    $('.gaia-argoui-app-viewtoggle').each(function(index) {
+      //if ($(this).aria-setsize == '3') {
+      $(this).hide();
+      //}
+    });
+
   });
 
   /* details.process.proceed */
